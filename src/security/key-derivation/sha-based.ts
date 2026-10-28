@@ -433,7 +433,7 @@ export function verifyPermsEntry(
   // Check permissions (bytes 0-3, little-endian)
   const perms = decrypted[0] | (decrypted[1] << 8) | (decrypted[2] << 16) | (decrypted[3] << 24);
 
-  if (perms !== expectedPermissions) {
+  if (perms !== (expectedPermissions | 0)) {
     return false;
   }
 

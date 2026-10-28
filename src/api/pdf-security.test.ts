@@ -547,4 +547,24 @@ describe("PDF security API", () => {
       expect(reloaded.getSecurity().encryptMetadata).toBe(false);
     });
   });
+
+  describe("unsigned /P", () => {
+    it("opens an R6 PDF with an unsigned /P using the empty user password", async () => {
+      const bytes = await loadFixture("encryption", "pypdf-unsigned-p-r6.pdf");
+      const pdf = await PDF.load(bytes);
+
+      expect(pdf.isAuthenticated).toBe(true);
+      expect(pdf.getTitle()).toBe("Unsigned P");
+    });
+
+    it("authenticates an R6 PDF with an unsigned /P as owner", async () => {
+      const bytes = await loadFixture("encryption", "pypdf-unsigned-p-r6.pdf");
+      const pdf = await PDF.load(bytes);
+
+      const result = pdf.authenticate("owner");
+
+      expect(result.authenticated).toBe(true);
+      expect(result.isOwner).toBe(true);
+    });
+  });
 });

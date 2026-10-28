@@ -52,6 +52,7 @@ Encrypted PDF tests.
 | `PasswordSample-256bit.pdf` | 8KB  | AES-256 (PDF 2.0)     |
 | `AESkeylength128.pdf`       | 12KB | AES-128               |
 | `AESkeylength256.pdf`       | 11KB | AES-256               |
+| `pypdf-unsigned-p-r6.pdf`   | 1KB  | AES-256, unsigned /P  |
 
 **Use for**: Phase 11 (encryption)
 
